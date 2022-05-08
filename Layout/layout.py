@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
+import csv
 
+# This only lists nodes that are special, by default nodes are added with the
+# default type
 with open("Nodes.csv") as f:
-    nodes = list(csv.reader(f))[1:]
+    nodes = list(csv.reader(f,delimiter=','))[1:]
 
 with open("Edges.csv") as f:
-    edges  = list(csv.reader(f))[1:]
+    edges = list(csv.reader(f,delimiter=','))[1:]
 
 # input validation and cleanup
 verts = set()
@@ -16,9 +19,12 @@ for row in edges:
     u, v = row[0], row[1]
     row[0] = u.upper()
     row[1] = v.upper()
-    if u.upper() not in verts or v.upper() not in verts:
-        print(f'{u} {v} bad')
-        print(1/0)
+    if u.upper() not in verts:
+        nodes.append((u.upper(), 'regular'))
+        verts.add(u.upper())
+    if v.upper() not in verts:
+        nodes.append((v.upper(), 'regular'))
+        verts.add(v.upper())
 
 with open("constants.js", "w") as f:
     f.write('var nodes = [\n')

@@ -26,12 +26,6 @@ function isNeighborLink(node, link) {
 
 
 function getNodeColor(node, neighbors) {
-  if (Array.isArray(neighbors) && neighbors.indexOf(node.id) > -1) {
-    //return node.level === 1 ? 'blue' : 'green'
-    return node.color
-  }
-
-  //return node.level === 1 ? 'red' : 'gray'
   return node.color
 }
 
@@ -93,7 +87,7 @@ var linkElements = svg.append("g")
   .data(links)
   .enter().append("line")
     .attr("stroke-width", 1)
-	  .attr("stroke", "rgba(50, 50, 50, 0.2)")
+	  .attr("stroke", "rgba(50, 50, 50, 0.5)")
 
 var nodeElements = svg.append("g")
   .attr("class", "nodes")
