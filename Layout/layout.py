@@ -35,7 +35,7 @@ with open("constants.js", "w") as f:
             c = "orange"
         elif ntype.startswith("hidden"):
             c = "red"
-        f.write('{{ id: "{}", group: {}, label: "{}-{}", level: 1, color: "{}" }},\n'.format(name, i, name, ntype[-1], c))
+        f.write('{{ id: "{}", group: {}, label: "{}", level: 1, color: "{}" }},\n'.format(name, i, name, c))
     f.write(']\n\nvar links = [\n')
     # All edges are undirected
     for u, v in edges:
