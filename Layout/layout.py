@@ -6,13 +6,33 @@ with open("Nodes.csv") as f:
 with open("Edges.csv") as f:
     edges  = list(csv.reader(f))[1:]
 
+# input validation and cleanup
+verts = set()
+for row in nodes:
+    row[0] = row[0].upper()
+    verts.add(row[0])
+
+for row in edges:
+    u, v = row[0], row[1]
+    row[0] = u.upper()
+    row[1] = v.upper()
+    if u.upper() not in verts or v.upper() not in verts:
+        print(f'{u} {v} bad')
+        print(1/0)
+
 with open("constants.js", "w") as f:
     f.write('var nodes = [\n')
-    for i, (name, ntype, fillno, ftype) in enumerate(nodes):
-        c = "orange" if ntype.startswith("target") and len(ntype) == 7 else "green"
+    # (name, type)
+    for i, (name, ntype) in enumerate(nodes):
+        c = "green"
+        if ntype.startswith("topic"):
+            c = "orange"
+        elif ntype.startswith("hidden"):
+            c = "red"
         f.write('{{ id: "{}", group: {}, label: "{}-{}", level: 1, color: "{}" }},\n'.format(name, i, name, ntype[-1], c))
     f.write(']\n\nvar links = [\n')
-    for u, v, etype in edges:
+    # All edges are undirected
+    for u, v in edges:
         f.write('{{ target: "{}", source: "{}", strength: 0.1 }},\n'.format(v, u))
     f.write(']\n')
 
