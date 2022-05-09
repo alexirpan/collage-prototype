@@ -1,10 +1,10 @@
 gandalf,fellowship
 gimli,fellowship
 legolas,fellowship
-wizards,gandalf
-wizards,dumbledore
-wizards,hermione granger
-wizards,glinda the good witch
+wizard,gandalf
+wizard,dumbledore
+wizard,hermione granger
+wizard,glinda the good witch
 dwarves,gimli
 dwarves,sleepy
 dwarves,doc
@@ -99,3 +99,9 @@ fortune,tarot
 tarot,strength
 tarot,magician
 tarot,sun
+magician,wizard
+power,superpower
+superpower,united states
+superpower,superman
+superpower,wonder woman
+superpower,shazam

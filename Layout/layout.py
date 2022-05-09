@@ -4,10 +4,10 @@ import csv
 # This only lists nodes that are special, by default nodes are added with the
 # default type
 with open("Nodes.csv") as f:
-    nodes = list(csv.reader(f,delimiter=','))[1:]
+    nodes = list(csv.reader(f,delimiter=','))
 
 with open("Edges.csv") as f:
-    edges = list(csv.reader(f,delimiter=','))[1:]
+    edges = list(csv.reader(f,delimiter=','))
 
 # input validation and cleanup
 verts = set()
