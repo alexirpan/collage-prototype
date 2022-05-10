@@ -3,12 +3,12 @@ fellowship,hidden
 dragons,hidden
 disciples,hidden
 nintendo,hidden
-wizards,topic
+wizard,given
 dwarves,topic
 archers,topic
 trains,topic
 bounty hunters,topic
-coins,topic
+coins,given
 mushrooms,topic
 stars,topic
 my little pony,topic
@@ -19,4 +19,5 @@ animals,topic
 courage,topic
 wisdom,topic
 power,topic
-mit,topic
+mit,given
+tarot,topic

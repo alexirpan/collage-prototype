@@ -31,7 +31,7 @@ with open("constants.js", "w") as f:
     # (name, type)
     for i, (name, ntype) in enumerate(nodes):
         c = "green"
-        if ntype.startswith("topic"):
+        if ntype.startswith("topic") or ntype.startswith("given"):
             c = "orange"
         elif ntype.startswith("hidden"):
             c = "red"

@@ -16,6 +16,14 @@ with open('positiondump') as f:
     positions = dict()
     for v, x, y in pos:
         positions[v.upper()] = (float(x), float(y))
+    # Translate to have x,y start at (100,100)
+    min_x = min(v[0] for v in positions.values())
+    min_y = min(v[1] for v in positions.values())
+    tx = min_x - 100
+    ty = min_y - 100
+    for v in positions:
+        x,y = positions[v]
+        positions[v] = (x - tx, y - ty)
 
 # input validation and cleanup
 verts = []
@@ -38,7 +46,7 @@ with open("locations.js", "w") as f:
     f.write('var nodes = [\n')
     # (name, type)
     for i, (name, ntype) in enumerate(nodes):
-        if ntype.startswith("topic"):
+        if ntype.startswith("topic") or ntype.startswith("given"):
             c = "orange"
         elif ntype.startswith("hidden"):
             c = "red"

@@ -16,6 +16,8 @@
     <span id="answerrepeat"></span><span id="answerreply"></span>
 </div>
 
+<h1>IF YOU REFRESH YOU LOSE ALL PROGRESS</h1>
+
 <svg width="2000" height="5000"></svg>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -68,6 +70,18 @@ function numNeighbors(answer) {
     return count;
 }
 
+function reveal(word) {
+    if (!revealedNodes.includes(cleanAnswer(word))) {
+        revealedNodes.push(cleanAnswer(word));
+    }
+}
+
+function solve(word) {
+    if (!solvedNodes.includes(cleanAnswer(word))) {
+        solvedNodes.push(cleanAnswer(word));
+    }
+}
+
 function getNodeStatus(node) {
   // There are 3 levels of visibility.
   // hidden - do not show
@@ -78,21 +92,27 @@ function getNodeStatus(node) {
   } else if (solvedNodes.includes(cleanAnswer(node.label))) {
       return "solved";
   } else if (node.ntype === "given") {
+      reveal(node.label);
+      solve(node.label);
       return "solved";
   }
   var neigh = numNeighbors(node.label);
   if (neigh >= 1) {
+    // always reveal
+    reveal(node.label);
     if (node.ntype === "topic") {
         // sutosolve the topic.
-        if (!solvedNodes.includes(cleanAnswer(node.label))) {
-            solvedNodes.push(cleanAnswer(node.label));
-        }
+        solve(node.label)
         return "solved";
     } else {
         return "revealed";
     }
   }
   return "hidden";
+}
+
+function getLinkVisible(link) {
+    return revealedNodes.includes(cleanAnswer(link.target)) && revealedNodes.includes(cleanAnswer(link.source))
 }
 
 function getLinkColor(node, link) {
@@ -109,13 +129,21 @@ function cleanAnswer(answer) {
     return cleaned;
 }
 
-// clean answer
-var ANSWERS = [];
-for (var i = 0; i < nodes.length; i++) {
-    ANSWERS.push(cleanAnswer(nodes[i].label));
+function getText(node) {
+    var stat = getNodeStatus(node);
+    if (stat === "hidden") {
+        return "";
+    } else if (stat === "revealed") {
+        return node.label.replaceAll(/[a-zA-Z]/ig, '*');
+    } else {
+        return node.label;
+    }
 }
 
+// nodes we've solved.
 var solvedNodes = [];
+// nodes we've revealed.
+var revealedNodes = [];
 
 var width = 5000//window.innerWidth
 var height = 5000//window.innerHeight
@@ -126,10 +154,9 @@ svg.attr('width', width).attr('height', height)
 function assignNodes() {
     // Right thing to do is svg.update() and to have the data bound to the DOM nodes
     // Too lazy to do it right though so instead remove then re-add all nodes each time.
-    // Re-iterate the process whenever the count of solved nodes increases, to handle
-    // propagation of topic nodes auto-solving.
 
     var startLen = solvedNodes.length;
+    var startLen2 = revealedNodes.length;
     svg.selectAll("*").remove();
 
     var nodeElements = svg.append("g")
@@ -141,13 +168,14 @@ function assignNodes() {
         .attr("fill", getNodeColor)
         .attr("cx", getNodeX)
         .attr("cy", getNodeY)
+        .style("display", function (node) { return getNodeStatus(node) === "hidden" ? "none" : "" })
 
     var textElements = svg.append("g")
       .attr("class", "texts")
       .selectAll("text")
       .data(nodes)
       .enter().append("text")
-        .text(function (node) { return  node.label + getNodeStatus(node) })
+        .text(getText)
           .attr("font-size", 16)
           .attr("dx", 15)
         .attr("dy", 4)
@@ -165,8 +193,12 @@ function assignNodes() {
         .attr('y1', function (link) { return link.source_y })
         .attr('x2', function (link) { return link.target_x })
         .attr('y2', function (link) { return link.target_y })
+        .style("display", function (link) { return getLinkVisible(link) ? "" : "none" })
+    // Re-iterate the process whenever the count of solved nodes increases, to handle
+    // propagation of topic nodes auto-solving.
     var endLen = solvedNodes.length;
-    if (endLen > startLen) {
+    var endLen2 = revealedNodes.length;
+    if (endLen > startLen || endLen2 > startLen2) {
         assignNodes();
     }
 }
@@ -178,7 +210,7 @@ var solvedNodes = [];
 $(document).ready(function() {
     function respondToSubmission(answer) {
         var clean = cleanAnswer(answer);
-        if (ANSWERS.includes(clean)) {
+        if (revealedNodes.includes(clean)) {
             if (!solvedNodes.includes(clean)) {
                 solvedNodes.push(clean);
             }
