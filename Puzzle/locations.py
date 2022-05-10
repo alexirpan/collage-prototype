@@ -38,12 +38,14 @@ with open("locations.js", "w") as f:
     f.write('var nodes = [\n')
     # (name, type)
     for i, (name, ntype) in enumerate(nodes):
-        c = "green"
         if ntype.startswith("topic"):
             c = "orange"
         elif ntype.startswith("hidden"):
             c = "red"
-        f.write('{{ id: "{}", group: {}, label: "{}", level: 1, color: "{}", x: "{}", y: "{}" }},\n'.format(name, i, name, c, positions[name][0], positions[name][1]))
+        else:
+            c = "green"
+
+        f.write('{{ id: "{}", group: {}, label: "{}", level: 1, color: "{}", x: "{}", y: "{}", ntype: "{}" }},\n'.format(name, i, name, c, positions[name][0], positions[name][1], ntype))
     f.write(']\n\nvar links = [\n')
     # All edges are undirected
     for u, v in edges:

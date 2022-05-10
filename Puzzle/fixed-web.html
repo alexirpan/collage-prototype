@@ -54,12 +54,45 @@ function getNodeY(node, neighbors) {
   return node.y
 }
 
-function getNodeVisible(node, neighbors) {
+function numNeighbors(answer) {
+    var count = 0;
+    for (var i = 0; i < links.length; i++) {
+        var link = links[i];
+        if (cleanAnswer(link.source) === cleanAnswer(answer) && solvedNodes.includes(cleanAnswer(link.target))) {
+            count++;
+        }
+        if (cleanAnswer(link.target) === cleanAnswer(answer) && solvedNodes.includes(cleanAnswer(link.source))) {
+            count++;
+        }
+    }
+    return count;
+}
+
+function getNodeStatus(node) {
   // There are 3 levels of visibility.
   // hidden - do not show
   // revealed - reveal the node but do not reveal the text.
   // solved - reveal the node entirely.
-  return "solved"
+  if (node.ntype === "hidden") {
+      return "hidden";
+  } else if (solvedNodes.includes(cleanAnswer(node.label))) {
+      return "solved";
+  } else if (node.ntype === "given") {
+      return "solved";
+  }
+  var neigh = numNeighbors(node.label);
+  if (neigh >= 1) {
+    if (node.ntype === "topic") {
+        // sutosolve the topic.
+        if (!solvedNodes.includes(cleanAnswer(node.label))) {
+            solvedNodes.push(cleanAnswer(node.label));
+        }
+        return "solved";
+    } else {
+        return "revealed";
+    }
+  }
+  return "hidden";
 }
 
 function getLinkColor(node, link) {
@@ -82,7 +115,7 @@ for (var i = 0; i < nodes.length; i++) {
     ANSWERS.push(cleanAnswer(nodes[i].label));
 }
 
-var knownNodes = [];
+var solvedNodes = [];
 
 var width = 5000//window.innerWidth
 var height = 5000//window.innerHeight
@@ -90,52 +123,64 @@ var height = 5000//window.innerHeight
 var svg = d3.select('svg')
 svg.attr('width', width).attr('height', height)
 
-var linkElements = svg.append("g")
-  .attr("class", "links")
-  .selectAll("line")
-  .data(links)
-  .enter().append("line")
-    .attr("stroke-width", 1)
-	  .attr("stroke", "rgba(50, 50, 50, 0.5)")
-    .attr('x1', function (link) { return link.source_x })
-    .attr('y1', function (link) { return link.source_y })
-    .attr('x2', function (link) { return link.target_x })
-    .attr('y2', function (link) { return link.target_y })
+function assignNodes() {
+    // Right thing to do is svg.update() and to have the data bound to the DOM nodes
+    // Too lazy to do it right though so instead remove then re-add all nodes each time.
+    // Re-iterate the process whenever the count of solved nodes increases, to handle
+    // propagation of topic nodes auto-solving.
 
-var nodeElements = svg.append("g")
-  .attr("class", "nodes")
-  .selectAll("circle")
-  .data(nodes)
-  .enter().append("circle")
-    .attr("r", 10)
-    .attr("fill", getNodeColor)
-    .attr("cx", getNodeX)
-    .attr("cy", getNodeY)
+    var startLen = solvedNodes.length;
+    svg.selectAll("*").remove();
 
-var textElements = svg.append("g")
-  .attr("class", "texts")
-  .selectAll("text")
-  .data(nodes)
-  .enter().append("text")
-    .text(function (node) { return  node.label })
-	  .attr("font-size", 16)
-	  .attr("dx", 15)
-    .attr("dy", 4)
-    .attr('x', function (node) { return node.x })
-    .attr('y', function (node) { return node.y })
+    var nodeElements = svg.append("g")
+      .attr("class", "nodes")
+      .selectAll("circle")
+      .data(nodes)
+      .enter().append("circle")
+        .attr("r", 10)
+        .attr("fill", getNodeColor)
+        .attr("cx", getNodeX)
+        .attr("cy", getNodeY)
 
-var knownNodes = [];
+    var textElements = svg.append("g")
+      .attr("class", "texts")
+      .selectAll("text")
+      .data(nodes)
+      .enter().append("text")
+        .text(function (node) { return  node.label + getNodeStatus(node) })
+          .attr("font-size", 16)
+          .attr("dx", 15)
+        .attr("dy", 4)
+        .attr('x', function (node) { return node.x })
+        .attr('y', function (node) { return node.y })
 
-function setVisibility() {
-    // Set visibility of all nodes and links based on observed nodes.
+    var linkElements = svg.append("g")
+      .attr("class", "links")
+      .selectAll("line")
+      .data(links)
+      .enter().append("line")
+        .attr("stroke-width", 1)
+          .attr("stroke", "rgba(50, 50, 50, 0.5)")
+        .attr('x1', function (link) { return link.source_x })
+        .attr('y1', function (link) { return link.source_y })
+        .attr('x2', function (link) { return link.target_x })
+        .attr('y2', function (link) { return link.target_y })
+    var endLen = solvedNodes.length;
+    if (endLen > startLen) {
+        assignNodes();
+    }
 }
+// Init the SVG
+assignNodes();
+
+var solvedNodes = [];
 
 $(document).ready(function() {
     function respondToSubmission(answer) {
         var clean = cleanAnswer(answer);
         if (ANSWERS.includes(clean)) {
-            if (!knownNodes.includes(clean)) {
-                knownNodes.push(clean);
+            if (!solvedNodes.includes(clean)) {
+                solvedNodes.push(clean);
             }
             return "Correct!";
         } else {
@@ -159,6 +204,7 @@ $(document).ready(function() {
         $('#answercheckbutton').unbind('click');
         $('#answercheckbutton').click(function() {
             checkAnswer();
+            assignNodes();
         });
     }
 
@@ -167,6 +213,7 @@ $(document).ready(function() {
     $(document).on("keypress", "#answerinput", function(e) {
       if (e.which == 13) {
           checkAnswer();
+          assignNodes();
       }
     });
 });
