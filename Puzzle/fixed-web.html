@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
+<style>
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+</style>
+
+<div class="navbar">
+    <input type="text" id="answerinput">
+    <input type="submit" value="Submit" id="answercheckbutton">
+    <br>
+    <span id="answerrepeat"></span><span id="answerreply"></span>
+</div>
+
 <svg width="2000" height="5000"></svg>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
+<!-- Screw it we're including jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript" src="locations.js"></script>
 <script>
-
-var known = []
 
 function getNeighbors(node) {
   return links.reduce(function (neighbors, link) {
@@ -55,6 +70,20 @@ function getTextColor(node, neighbors) {
   return Array.isArray(neighbors) && neighbors.indexOf(node.id) > -1 ? 'green' : 'black'
 }
 
+function cleanAnswer(answer) {
+    var cleaned = answer.replace(/[^0-9a-zA-Z]/g, '');
+    cleaned = cleaned.toUpperCase();
+    return cleaned;
+}
+
+// clean answer
+var ANSWERS = [];
+for (var i = 0; i < nodes.length; i++) {
+    ANSWERS.push(cleanAnswer(nodes[i].label));
+}
+
+var knownNodes = [];
+
 var width = 5000//window.innerWidth
 var height = 5000//window.innerHeight
 
@@ -101,4 +130,44 @@ function setVisibility() {
     // Set visibility of all nodes and links based on observed nodes.
 }
 
+$(document).ready(function() {
+    function respondToSubmission(answer) {
+        var clean = cleanAnswer(answer);
+        if (ANSWERS.includes(clean)) {
+            if (!knownNodes.includes(clean)) {
+                knownNodes.push(clean);
+            }
+            return "Correct!";
+        } else {
+            return "Wrong";
+        }
+    }
+
+    function receiveAnswerReply(answer, reply) {
+        $("#answerrepeat").html(cleanAnswer(answer) + ": ");
+        $("#answerreply").html(reply);
+    }
+
+    function checkAnswer() {
+        var answer = $('#answerinput').val();
+        var reply = respondToSubmission(answer);
+        receiveAnswerReply(answer, reply);
+        $('#answerinput').val('');
+    }
+
+    function turnOnAnswerCheck() {
+        $('#answercheckbutton').unbind('click');
+        $('#answercheckbutton').click(function() {
+            checkAnswer();
+        });
+    }
+
+    turnOnAnswerCheck();
+    // Enter for answer checking if answerinput box is selected.
+    $(document).on("keypress", "#answerinput", function(e) {
+      if (e.which == 13) {
+          checkAnswer();
+      }
+    });
+});
 </script>
