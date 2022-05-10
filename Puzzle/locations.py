@@ -47,7 +47,7 @@ with open("locations.js", "w") as f:
     f.write(']\n\nvar links = [\n')
     # All edges are undirected
     for u, v in edges:
-        f.write('{{ target: "{}", source: "{}", strength: 0.1 }},\n'.format(v, u))
+        f.write('{{ target: "{}", source: "{}", source_x: "{}", source_y: "{}", target_x: "{}", target_y: "{}" }},\n'.format(v, u, positions[u][0], positions[u][1], positions[v][0], positions[v][1]))
     f.write(']\n')
 
 # nodes.forEach(function (n) { console.log(n.id, n.fx, n.fy)})
