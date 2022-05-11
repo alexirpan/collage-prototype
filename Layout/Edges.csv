@@ -25,20 +25,56 @@ nintendo,samus
 nintendo,fox
 bounty hunters,samus
 bounty hunters,boba fett
+boba fett,star wars
+star,star trek
+star,star wars
+star wars,boba fett
+star wars,darth vader
+star wars,luke skywalker
+darth vader,luke skywalker
 bounty hunters,jet black
 bounty hunters,spike spiegel
 animals,fox
 animals,hippo
 mario,mushrooms
-mario,stars
+mario,star
 mario,coins
 coins,penny
 coins,quarter
 coins,nickel
-stars,sun
-stars,proxima centauri
-stars,sirius
+star,sun
+star,sirius
+wizard,sirius black
+wizard,bellatrix black
+wizard,merlin
+wizard,cedric diggory
+cedric diggory,robert pattinson characters
+robert pattinson characters,batman
+robert pattinson characters,edward cullen
+black,sirius black
+black,jacob black
+black,jet black
+cowboy bebop,jet black
+cowboy bebop,spike spiegel
+cowboy bebop,faye valentine
 my little pony,spike
+my little pony,applejack
+apples,applejack
+my little pony,twilight sparkle
+twilight sparkle,twilight
+twilight,edward cullen
+twilight,bella swan
+twilight,jacob black
+twilight,vampire
+twilight,werewolf
+twilight,new moon
+twilight,eclipse
+eclipse,sun
+eclipse,moon
+new moon,moon
+tarot,moon
+tarot,wheel of fortune
+fortune,wheel of fortune
 spike,spike spiegel
 dragons,spike
 dragons,mushu
@@ -63,9 +99,16 @@ dnd stats,intelligence
 dnd stats,charisma
 dnd stats,constitution
 power,powerpuff girls
-lauren faust shows,powerpuff girls
-lauren faust shows,my little pony
-lauren faust shows,dc super hero girls
+buttercup,powerpuff girls
+bubbles,powerpuff girls
+blossom,powerpuff girls
+mojo jojo,powerpuff girls
+lauren faust,powerpuff girls
+powerpuff girls,puff
+puff,puff the magic dragon
+dragons,puff the magic dragon
+lauren faust,my little pony
+lauren faust,dc super hero girls
 dc super hero girls,wonder woman
 dc super hero girls,batgirl
 dc super hero girls,zatanna
@@ -75,6 +118,8 @@ dc,batgirl
 dc,zatanna
 dc,superman
 dc,batman
+batgirl,batman
+
 dc,shazam
 shazam,solomon
 shazam,hercules
@@ -116,6 +161,3 @@ green,green arrow
 alcohol,beer
 alcohol,vodka
 alcohol,whiskey
-NATO,whiskey
-NATO,mike
-NATO,romeo

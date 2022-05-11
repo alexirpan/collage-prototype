@@ -42,5 +42,4 @@ with open("constants.js", "w") as f:
         f.write('{{ target: "{}", source: "{}", strength: 0.1 }},\n'.format(v, u))
     f.write(']\n')
 
-# nodes.forEach(function (n) { console.log(n.id, n.fx, n.fy)})
-# nodes.forEach(function (n) { console.log(n.id, Math.round(n.fx) - 1950, 2700 - Math.round(n.fy))})
+# nodes.forEach(function (n) { console.log(n.id, n.x, n.y)})
