@@ -21,9 +21,9 @@ trains,james
 trains,percy
 trains,sir topham hatt
 nintendo,mario
-nintendo,samus
+nintendo,samus aran
 nintendo,fox
-bounty hunters,samus
+bounty hunters,samus aran
 bounty hunters,boba fett
 boba fett,star wars
 star,star trek
@@ -44,6 +44,9 @@ coins,quarter
 coins,nickel
 star,sun
 star,sirius
+wizard,percy weasley
+percy weasley,percy
+sirius,sirius black
 wizard,sirius black
 wizard,bellatrix black
 wizard,merlin
@@ -119,7 +122,6 @@ dc,zatanna
 dc,superman
 dc,batman
 batgirl,batman
-
 dc,shazam
 shazam,solomon
 shazam,hercules
