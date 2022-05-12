@@ -5,9 +5,11 @@ import csv
 # default type
 with open("Nodes.csv") as f:
     nodes = list(csv.reader(f,delimiter=','))
+    nodes = [n for n in nodes if n]
 
 with open("Edges.csv") as f:
     edges = list(csv.reader(f,delimiter=','))
+    edges = [e for e in edges if e]
 
 # input validation and cleanup
 verts = set()

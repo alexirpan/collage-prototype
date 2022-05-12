@@ -34,6 +34,7 @@ star wars,luke skywalker
 darth vader,luke skywalker
 bounty hunters,jet black
 bounty hunters,spike spiegel
+bounty hunters,faye valentine
 animals,fox
 animals,hippo
 mario,mushrooms
@@ -57,9 +58,6 @@ robert pattinson characters,edward cullen
 black,sirius black
 black,jacob black
 black,jet black
-cowboy bebop,jet black
-cowboy bebop,spike spiegel
-cowboy bebop,faye valentine
 my little pony,spike
 my little pony,applejack
 apples,applejack
@@ -195,3 +193,4 @@ holiday forest,valentines day
 holiday forest,thanksgiving
 valentines day,valentine
 valentine,faye valentine
+world,brave new world
