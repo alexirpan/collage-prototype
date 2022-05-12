@@ -11,6 +11,7 @@ with open("Edges.csv") as f:
 
 # input validation and cleanup
 verts = set()
+edg = set()
 for row in nodes:
     row[0] = row[0].upper()
     verts.add(row[0])
@@ -25,6 +26,7 @@ for row in edges:
     if v.upper() not in verts:
         nodes.append((v.upper(), 'regular'))
         verts.add(v.upper())
+    edg.add((u.upper(), v.upper()))
 
 with open("constants.js", "w") as f:
     f.write('var nodes = [\n')
@@ -41,5 +43,16 @@ with open("constants.js", "w") as f:
     for u, v in edges:
         f.write('{{ target: "{}", source: "{}", strength: 0.1 }},\n'.format(v, u))
     f.write(']\n')
+
+# Report some vertex info
+degrees = {}
+for v in verts:
+    degrees[v] = len([e for e in edg if e[0] == v or e[1] == v])
+print('Average degree: ', sum(degrees.values()) / len(degrees.values()))
+
+print('Degree <= 1:')
+for v in verts:
+    if degrees[v] <= 1:
+        print(v)
 
 # nodes.forEach(function (n) { console.log(n.id, n.x, n.y)})

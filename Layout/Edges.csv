@@ -4,7 +4,6 @@ legolas,fellowship
 wizard,gandalf
 wizard,dumbledore
 wizard,hermione granger
-wizard,glinda the good witch
 dwarves,gimli
 dwarves,sleepy
 dwarves,doc
@@ -65,6 +64,12 @@ my little pony,spike
 my little pony,applejack
 apples,applejack
 my little pony,twilight sparkle
+my little pony,princess luna
+my little pony,princess celestia
+princess celestia,sun
+princess luna,moon
+princess celestia,princess
+princess luna,princess
 twilight sparkle,twilight
 twilight,edward cullen
 twilight,bella swan
@@ -78,6 +83,7 @@ eclipse,moon
 new moon,moon
 tarot,moon
 tarot,wheel of fortune
+tarot,world
 fortune,wheel of fortune
 spike,spike spiegel
 dragons,spike
@@ -85,7 +91,7 @@ dragons,mushu
 disney,mushu
 disney,snow white
 snow white,sleepy
-snow shite,grumpy
+snow white,grumpy
 space programs,apollo
 space programs,mercury
 space programs,gemini
@@ -97,10 +103,8 @@ triforce,power
 triforce,courage
 triforce,wisdom
 dnd stats,strength
-dnd stats,dexterity
 dnd stats,wisdom
 dnd stats,intelligence
-dnd stats,charisma
 dnd stats,constitution
 power,powerpuff girls
 buttercup,powerpuff girls
@@ -127,6 +131,7 @@ dc,shazam
 shazam,solomon
 shazam,hercules
 shazam,atlas
+atlas,world
 shazam,zeus
 shazam,achilles
 shazam,mercury
@@ -159,8 +164,34 @@ mit,mystery hunt
 mit,great dome
 mit,stata center
 mit,green building
+mit,kresge center
 green,green building
 green,green arrow
 alcohol,beer
 alcohol,vodka
 alcohol,whiskey
+buttercup,princess buttercup
+princess buttercup,princess
+literature,brave new world
+literature,twilight
+dystopia,the hunger games
+doc,doc brown
+colorful characters,green arrow
+colorful characters,doc brown
+colorful characters,snow white
+metals,nickel
+metals,tin
+tin,tin man
+tin man,the wizard of oz
+wizard,the wizard of oz
+dorothy,the wizard of oz
+penny,penny park
+penny park,mystery hunt
+mystery hunt,bookspace
+bookspace,literature
+mystery hunt,perpiw
+mystery hunt,holiday forest
+holiday forest,valentines day
+holiday forest,thanksgiving
+valentines day,valentine
+valentine,faye valentine
