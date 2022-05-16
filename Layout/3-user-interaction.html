@@ -30,8 +30,8 @@ function getNodeColor(node, neighbors) {
 }
 
 
-function getLinkColor(node, link) {
-  return isNeighborLink(node, link) ? 'green' : '#E5E5E5'
+function getLinkColor(link) {
+  return link.color
 }
 
 function getTextColor(node, neighbors) {
@@ -78,7 +78,6 @@ function selectNode(selectedNode) {
   // we modify the styles to highlight selected nodes
   nodeElements.attr('fill', function (node) { return getNodeColor(node, neighbors) })
   textElements.attr('fill', function (node) { return getTextColor(node, neighbors) })
-  linkElements.attr('stroke', function (link) { return getLinkColor(selectedNode, link) })
 }
 
 var linkElements = svg.append("g")
@@ -87,7 +86,7 @@ var linkElements = svg.append("g")
   .data(links)
   .enter().append("line")
     .attr("stroke-width", 1)
-	  .attr("stroke", "rgba(50, 50, 50, 0.5)")
+	  .attr("stroke", getLinkColor)
 
 var nodeElements = svg.append("g")
   .attr("class", "nodes")

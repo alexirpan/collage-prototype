@@ -20,6 +20,9 @@ for row in nodes:
 
 for row in edges:
     u, v = row[0], row[1]
+    if len(row) == 2:
+        # default color
+        row.append('rgba(50, 50, 50, 0.5)')
     row[0] = u.upper()
     row[1] = v.upper()
     if u.upper() not in verts:
@@ -42,8 +45,8 @@ with open("constants.js", "w") as f:
         f.write('{{ id: "{}", group: {}, label: "{}", level: 1, color: "{}" }},\n'.format(name, i, name, c))
     f.write(']\n\nvar links = [\n')
     # All edges are undirected
-    for u, v in edges:
-        f.write('{{ target: "{}", source: "{}", strength: 0.5 }},\n'.format(v, u))
+    for u, v, color in edges:
+        f.write('{{ target: "{}", source: "{}", color: "{}", strength: 0.5 }},\n'.format(v, u, color))
     f.write(']\n')
 
 # Report some vertex info

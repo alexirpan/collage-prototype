@@ -33,6 +33,9 @@ for row in nodes:
 
 for row in edges:
     u, v = row[0], row[1]
+    if len(row) == 2:
+        # default color
+        row.append('rgba(50, 50, 50, 0.5)')
     row[0] = u.upper()
     row[1] = v.upper()
     if u.upper() not in verts:
@@ -56,8 +59,8 @@ with open("locations.js", "w") as f:
         f.write('{{ id: "{}", group: {}, label: "{}", level: 1, color: "{}", x: "{}", y: "{}", ntype: "{}" }},\n'.format(name, i, name, c, positions[name][0], positions[name][1], ntype))
     f.write(']\n\nvar links = [\n')
     # All edges are undirected
-    for u, v in edges:
-        f.write('{{ target: "{}", source: "{}", source_x: "{}", source_y: "{}", target_x: "{}", target_y: "{}" }},\n'.format(v, u, positions[u][0], positions[u][1], positions[v][0], positions[v][1]))
+    for u, v, color in edges:
+        f.write('{{ target: "{}", source: "{}", color: "{}", source_x: "{}", source_y: "{}", target_x: "{}", target_y: "{}" }},\n'.format(v, u, color, positions[u][0], positions[u][1], positions[v][0], positions[v][1]))
     f.write(']\n')
 
 # nodes.forEach(function (n) { console.log(n.id, n.fx, n.fy)})

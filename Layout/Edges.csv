@@ -25,7 +25,7 @@ nintendo,fox
 bounty hunters,samus aran
 bounty hunters,boba fett
 boba fett,star wars
-tarot,star
+major arcana,star
 star,star trek
 star,star wars
 star wars,boba fett
@@ -78,10 +78,11 @@ twilight,new moon
 twilight,eclipse
 eclipse,sun
 eclipse,moon
+sun,moon,red
 new moon,moon
-tarot,moon
-tarot,wheel of fortune
-tarot,world
+major arcana,moon
+major arcana,wheel of fortune
+major arcana,world
 fortune,wheel of fortune
 spike,spike spiegel
 dragons,spike
@@ -148,10 +149,10 @@ fortune,fortune favors the bold
 fortune,fortune telling
 fortune,fortune cookie
 fortune telling,tea leaves
-fortune telling,tarot
-tarot,strength
-tarot,magician
-tarot,sun
+fortune telling,major arcana
+major arcana,strength
+major arcana,magician
+major arcana,sun
 magician,wizard
 power,superpower
 superpower,united states
