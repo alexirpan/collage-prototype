@@ -58,6 +58,7 @@ robert pattinson characters,edward cullen
 black,sirius black
 black,jacob black
 black,jet black
+black,bellatrix black
 my little pony,spike
 my little pony,applejack
 apples,applejack
@@ -142,12 +143,10 @@ mit,athena
 wisdom,athena
 wisdom,solomon
 courage,brave new world
-courage,liquid courage
 courage,fortune favors the bold
 fortune,fortune favors the bold
 fortune,fortune telling
 fortune,fortune cookie
-fortune telling,tea leaves
 fortune telling,major arcana
 major arcana,strength
 major arcana,magician
@@ -175,7 +174,7 @@ metals,tin
 tin,tin man
 tin man,the wizard of oz
 wizard,the wizard of oz
-dorothy,the wizard of oz
+dorothy gale,the wizard of oz
 cowardly lion,the wizard of oz
 cowardly lion,courage,red
 penny,penny park
@@ -198,3 +197,7 @@ tom hanks,the green mile
 green,the green mile
 disney & pixar,toy story
 tom hanks,toy story
+dorothy gale,kansas
+dorothy gale,toto
+toto,africa
+toto,hold the line
