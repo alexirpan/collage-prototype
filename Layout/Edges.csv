@@ -87,8 +87,8 @@ fortune,wheel of fortune
 spike,spike spiegel
 dragons,spike
 dragons,mushu
-disney,mushu
-disney,snow white
+disney & pixar,mushu
+disney & pixar,snow white
 snow white,sleepy
 snow white,grumpy
 space programs,apollo
@@ -144,7 +144,6 @@ wisdom,solomon
 courage,brave new world
 courage,liquid courage
 courage,fortune favors the bold
-alcohol,liquid courage
 fortune,fortune favors the bold
 fortune,fortune telling
 fortune,fortune cookie
@@ -164,17 +163,12 @@ mit,green building
 mit,kresge center
 green,green building
 green,green arrow
-alcohol,beer
-alcohol,vodka
-alcohol,whiskey
 buttercup,princess buttercup
 princess buttercup,princess
 literature,brave new world
 literature,twilight
 dystopia,the hunger games
-doc,doc brown
 colorful characters,green arrow
-colorful characters,doc brown
 colorful characters,snow white
 metals,nickel
 metals,tin
@@ -182,6 +176,8 @@ tin,tin man
 tin man,the wizard of oz
 wizard,the wizard of oz
 dorothy,the wizard of oz
+cowardly lion,the wizard of oz
+cowardly lion,courage,red
 penny,penny park
 penny park,mystery hunt
 mystery hunt,bookspace
@@ -196,4 +192,9 @@ world,brave new world
 valentines day,box of chocolates
 forrest gump,box of chocolates
 forrest gump,tom hanks
-forrest gump,best picture
+forrest gump,vietnam
+tom hanks,apollo
+tom hanks,the green mile
+green,the green mile
+disney & pixar,toy story
+tom hanks,toy story
