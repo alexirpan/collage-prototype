@@ -53,6 +53,8 @@ with open("constants.js", "w") as f:
 degrees = {}
 for v in verts:
     degrees[v] = len([e for e in edg if e[0] == v or e[1] == v])
+print('Num vertices: %d' % len(verts))
+print('Num edges: %d' % len(edges))
 print('Average degree: ', sum(degrees.values()) / len(degrees.values()))
 
 if min(degrees.values()) == 0:
