@@ -55,6 +55,12 @@ for v in verts:
     degrees[v] = len([e for e in edg if e[0] == v or e[1] == v])
 print('Average degree: ', sum(degrees.values()) / len(degrees.values()))
 
+if min(degrees.values()) == 0:
+    print('Degree 0:')
+    for v in verts:
+        if degrees[v] == 0:
+            print(v)
+
 print('Degree <= 1:')
 for v in verts:
     if degrees[v] <= 1:
