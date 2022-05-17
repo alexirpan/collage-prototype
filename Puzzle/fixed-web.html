@@ -188,7 +188,7 @@ function assignNodes() {
       .data(links)
       .enter().append("line")
         .attr("stroke-width", 1)
-          .attr("stroke", "rgba(50, 50, 50, 0.5)")
+          .attr("stroke", getLinkColor)
         .attr('x1', function (link) { return link.source_x })
         .attr('y1', function (link) { return link.source_y })
         .attr('x2', function (link) { return link.target_x })
