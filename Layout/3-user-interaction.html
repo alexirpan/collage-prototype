@@ -50,10 +50,11 @@ var linkForce = d3
   .id(function (link) { return link.id })
   .strength(function (link) { return link.strength })
 
+// more negative charge = more sparse
 var simulation = d3
   .forceSimulation()
   .force('link', linkForce)
-  .force('charge', d3.forceManyBody().strength(-120))
+  .force('charge', d3.forceManyBody().strength(-360))
   .force('center', d3.forceCenter(width / 2, height / 2))
 
 var dragDrop = d3.drag().on('start', function (node) {

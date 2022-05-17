@@ -151,7 +151,25 @@ dc super hero girls,supergirl
 dc,wonder woman
 dc,batgirl
 dc,zatanna
+dc,supergirl
 dc,superman
+superman,supergirl,red
+batman,batgirl,red
+batman,robin
+robin,birds
+birds,sparrow
+birds,cardinal
+sparrow,jack sparrow
+jack sparrow,jack
+jack sparrow,pirates
+pirates,davy jones
+pirates,blackbeard
+pirates,captain hook
+pirates,luffy
+pirates,long john silver
+luffy,one piece
+jack,jack black
+black,jack black
 dc,batman
 batgirl,batman
 dc,shazam
@@ -199,6 +217,9 @@ colorful characters,snow white
 colorful characters,doc brown
 metals,nickel
 metals,tin
+metals,silver
+metals,gold
+silver,long john silver
 tin,tin man
 tin man,the wizard of oz
 wizard,the wizard of oz
@@ -224,6 +245,8 @@ tom hanks,apollo
 tom hanks,the green mile
 green,the green mile
 disney & pixar,toy story
+disney & pixar,peter pan
+peter pan,captain hook
 tom hanks,toy story
 dorothy gale,kansas
 dorothy gale,toto

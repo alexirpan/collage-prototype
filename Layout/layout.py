@@ -46,7 +46,7 @@ with open("constants.js", "w") as f:
     f.write(']\n\nvar links = [\n')
     # All edges are undirected
     for u, v, color in edges:
-        f.write('{{ target: "{}", source: "{}", color: "{}", strength: 0.5 }},\n'.format(v, u, color))
+        f.write('{{ target: "{}", source: "{}", color: "{}", strength: 0.3 }},\n'.format(v, u, color))
     f.write(']\n')
 
 # Report some vertex info
