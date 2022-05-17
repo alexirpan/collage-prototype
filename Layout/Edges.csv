@@ -35,6 +35,33 @@ darth vader,luke skywalker
 bounty hunters,jet black
 bounty hunters,spike spiegel
 bounty hunters,faye valentine
+bounty hunters,rick deckard
+bounty hunters,john wick
+john wick,keanu reeves
+keanu reeves,neo
+neo,the matrix
+keanu reeves,ted
+ted,bill and ted
+the matrix,revolutions
+the matrix,resurrections
+the matrix,trinity
+the matrix,morpheus
+trinity,father
+trinity,son
+trinity,holy spirit
+son,daughter,red
+father,mother,red
+revolutions,america
+revolutions,france
+revolutions,russia
+revolutions,haiti
+time travel,bill and ted
+time travel,back to the future
+back to the future,doc brown
+doc brown,doc
+cowboy bebop,jet black
+cowboy bebop,spike spiegel
+cowboy bebop,faye valentine
 animals,fox
 animals,hippo
 mario,mushrooms
@@ -169,6 +196,7 @@ literature,twilight
 dystopia,the hunger games
 colorful characters,green arrow
 colorful characters,snow white
+colorful characters,doc brown
 metals,nickel
 metals,tin
 tin,tin man
