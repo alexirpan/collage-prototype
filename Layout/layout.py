@@ -5,8 +5,12 @@ import csv
 # default type
 with open("Nodes.csv") as f:
     nodes = list(csv.reader(f,delimiter=','))
+    # Drop header
+    nodes = nodes[1:]
     nodes = [n for n in nodes if n]
-    nodes = [[t.strip() for t in row] for row in nodes]
+    # drop empty cells
+    nodes = [[t.strip() for t in row if t.strip()] for row in nodes]
+    # uppercase answers but not node type
     for row in nodes:
         row[0] = row[0].upper()
 
@@ -14,10 +18,12 @@ with open("Nodes.csv") as f:
 edg = set()
 with open("Edges.csv") as f:
     rows = list(csv.reader(f,delimiter=','))
+    # Drop header
+    rows = rows[1:]
     rows = [row for row in rows if row]
-    rows = [[t.upper().strip() for t in row] for row in rows]
+    # drop empty cells
+    rows = [[t.upper().strip() for t in row if t.strip()] for row in rows]
     for row in rows:
-        print(row)
         start = row[0]
         for end in row[1:]:
             edg.add(tuple(sorted([start, end])))
