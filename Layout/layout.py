@@ -6,16 +6,18 @@ import csv
 with open("Nodes.csv") as f:
     nodes = list(csv.reader(f,delimiter=','))
     nodes = [n for n in nodes if n]
+    nodes = [[t.strip() for t in row] for row in nodes]
     for row in nodes:
-        row[0] = row.upper()
+        row[0] = row[0].upper()
 
 # Adjacency list -> list of (u,v) edges
 edg = set()
 with open("Edges.csv") as f:
     rows = list(csv.reader(f,delimiter=','))
     rows = [row for row in rows if row]
-    rows = [[t.upper() for t in row] for row in rows]
+    rows = [[t.upper().strip() for t in row] for row in rows]
     for row in rows:
+        print(row)
         start = row[0]
         for end in row[1:]:
             edg.add(tuple(sorted([start, end])))
@@ -23,7 +25,6 @@ with open("Edges.csv") as f:
 
 # input validation and cleanup
 verts = set()
-edg = set()
 for row in nodes:
     verts.add(row[0])
 
@@ -49,7 +50,7 @@ with open("constants.js", "w") as f:
         f.write('{{ id: "{}", group: {}, label: "{}", level: 1, color: "{}" }},\n'.format(name, i, name, c))
     f.write(']\n\nvar links = [\n')
     # All edges are undirected
-    for u, v in edges:
+    for u, v in edg:
         f.write('{{ target: "{}", source: "{}", color: "rgb(50,50,50,0.5)", strength: 0.3 }},\n'.format(v, u))
     f.write(']\n')
 
@@ -58,7 +59,7 @@ degrees = {}
 for v in verts:
     degrees[v] = len([e for e in edg if e[0] == v or e[1] == v])
 print('Num vertices: %d' % len(verts))
-print('Num edges: %d' % len(edges))
+print('Num edges: %d' % len(edg))
 print('Average degree: ', sum(degrees.values()) / len(degrees.values()))
 
 if min(degrees.values()) == 0:

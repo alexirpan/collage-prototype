@@ -1,93 +1,41 @@
-gandalf,fellowship
-gimli,fellowship
-legolas,fellowship
-wizard,gandalf
-wizard,dumbledore
-wizard,hermione granger
-dwarves,gimli
-dwarves,sleepy
-dwarves,doc
-dwarves,grumpy
-archers,legolas
-archers,katniss everdeen
-archers,robin hood
-archers,apollo
-archers,green arrow
-disciples,thomas
-disciples,james
-trains,thomas
-trains,james
-trains,percy
-trains,sir topham hatt
-nintendo,mario
-nintendo,samus aran
-nintendo,fox
-bounty hunters,samus aran
-bounty hunters,boba fett
+fellowship,gandalf,gimli,legolas
+wizard,gandalf,dumbledore,hermione granger
+dwarves,gimli,sleepy,doc,grumpy
+archers,legolas,katniss everdeen,robin hood,apollo,green arrow
+disciples,thomas,james,
+thomas the tank engine,thomas,james,percy,sir topham hatt
+nintendo,mario,samus aran,fox
+bounty hunters,samus aran,boba fett
 boba fett,star wars
 major arcana,star
-star,star trek
-star,star wars
-star wars,boba fett
-star wars,darth vader
-star wars,luke skywalker
+star,star trek,star wars
+star wars,boba fett,darth vader,luke skywalker
 darth vader,luke skywalker
-bounty hunters,jet black
-bounty hunters,spike spiegel
-bounty hunters,faye valentine
-bounty hunters,rick deckard
-bounty hunters,john wick
+bounty hunters,jet black,spike spiegel,faye valentine,rick deckard,john wick
 john wick,keanu reeves
-keanu reeves,neo
-neo,the matrix
-keanu reeves,ted
+keanu reeves,neo,ted
 ted,bill and ted
-the matrix,revolutions
-the matrix,resurrections
-the matrix,trinity
-the matrix,morpheus
-trinity,father
-trinity,son
-trinity,holy spirit
-revolutions,america
-revolutions,france
-revolutions,russia
-revolutions,haiti
-time travel,bill and ted
-time travel,back to the future
+neo,the matrix
+the matrix,revolutions,resurrections,trinity,morpheus
+trinity,father,son,holy spirit
+revolutions,america,france,russia,haiti
+time travel,bill and ted,back to the future
 back to the future,doc brown
 doc brown,doc
-cowboy bebop,jet black
-cowboy bebop,spike spiegel
-cowboy bebop,faye valentine
-mario,mushrooms
-mario,star
-mario,coins
-coins,penny
-coins,quarter
-coins,nickel
-star,sun
-star,sirius
+cowboy bebop,jet black,spike spiegel,faye valentine
+mario,mushrooms,star,coins
+coins,penny,quarter,nickel
+star,sun,sirius
 wizard,percy weasley
 percy weasley,percy
 sirius,sirius black
-wizard,sirius black
-wizard,bellatrix black
-wizard,merlin
-wizard,cedric diggory
+wizard,sirius black,bellatrix black,merlin,cedric diggory
 cedric diggory,robert pattinson characters
 robert pattinson characters,batman
 robert pattinson characters,edward cullen
-black,sirius black
-black,jacob black
-black,jet black
-black,bellatrix black
-my little pony,spike
-my little pony,applejack
+black,sirius black,jacob black,jet black,bellatrix black
 apples,applejack
-my little pony,twilight sparkle
-my little pony,princess luna
-my little pony,princess celestia
+my little pony,spike,applejack,twilight sparkle,princess luna,princess celestia
 princess celestia,sun
 princess luna,moon
 princess celestia,princess
@@ -202,12 +150,8 @@ green,green building
 green,green arrow
 buttercup,princess buttercup
 princess buttercup,princess
-dystopia,brave new world
-dystopia,the hunger games
-dystopia,1984
-colorful characters,green arrow
-colorful characters,snow white
-colorful characters,doc brown
+dystopia,brave new world,the hunger games,1984
+colorful characters,green arrow,snow white,doc brown
 metals,nickel
 metals,tin
 metals,silver
