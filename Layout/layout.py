@@ -6,32 +6,34 @@ import csv
 with open("Nodes.csv") as f:
     nodes = list(csv.reader(f,delimiter=','))
     nodes = [n for n in nodes if n]
+    for row in nodes:
+        row[0] = row.upper()
 
+# Adjacency list -> list of (u,v) edges
+edg = set()
 with open("Edges.csv") as f:
-    edges = list(csv.reader(f,delimiter=','))
-    edges = [e for e in edges if e]
+    rows = list(csv.reader(f,delimiter=','))
+    rows = [row for row in rows if row]
+    rows = [[t.upper() for t in row] for row in rows]
+    for row in rows:
+        start = row[0]
+        for end in row[1:]:
+            edg.add(tuple(sorted([start, end])))
+
 
 # input validation and cleanup
 verts = set()
 edg = set()
 for row in nodes:
-    row[0] = row[0].upper()
     verts.add(row[0])
 
-for row in edges:
-    u, v = row[0], row[1]
-    if len(row) == 2:
-        # default color
-        row.append('rgba(50, 50, 50, 0.5)')
-    row[0] = u.upper()
-    row[1] = v.upper()
-    if u.upper() not in verts:
-        nodes.append((u.upper(), 'regular'))
-        verts.add(u.upper())
-    if v.upper() not in verts:
-        nodes.append((v.upper(), 'regular'))
-        verts.add(v.upper())
-    edg.add((u.upper(), v.upper()))
+for u, v in edg:
+    if u not in verts:
+        nodes.append((u, 'regular'))
+        verts.add(u)
+    if v not in verts:
+        nodes.append((v, 'regular'))
+        verts.add(v)
 
 with open("constants.js", "w") as f:
     f.write('var nodes = [\n')
@@ -42,11 +44,13 @@ with open("constants.js", "w") as f:
             c = "orange"
         elif ntype.startswith("hidden"):
             c = "red"
+        elif ntype.startswith("answer"):
+            c = "pink"
         f.write('{{ id: "{}", group: {}, label: "{}", level: 1, color: "{}" }},\n'.format(name, i, name, c))
     f.write(']\n\nvar links = [\n')
     # All edges are undirected
-    for u, v, color in edges:
-        f.write('{{ target: "{}", source: "{}", color: "{}", strength: 0.3 }},\n'.format(v, u, color))
+    for u, v in edges:
+        f.write('{{ target: "{}", source: "{}", color: "rgb(50,50,50,0.5)", strength: 0.3 }},\n'.format(v, u))
     f.write(']\n')
 
 # Report some vertex info

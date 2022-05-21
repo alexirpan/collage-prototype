@@ -49,8 +49,6 @@ the matrix,morpheus
 trinity,father
 trinity,son
 trinity,holy spirit
-son,daughter,red
-father,mother,red
 revolutions,america
 revolutions,france
 revolutions,russia
@@ -104,7 +102,6 @@ twilight,new moon
 twilight,eclipse
 eclipse,sun
 eclipse,moon
-sun,moon,red
 new moon,moon
 major arcana,moon
 major arcana,wheel of fortune
@@ -150,8 +147,6 @@ dc,batgirl
 dc,zatanna
 dc,supergirl
 dc,superman
-superman,supergirl,red
-batman,batgirl,red
 batman,robin
 robin,birds
 birds,sparrow
@@ -210,7 +205,6 @@ princess buttercup,princess
 dystopia,brave new world
 dystopia,the hunger games
 dystopia,1984
-dystopia,utopia,red
 colorful characters,green arrow
 colorful characters,snow white
 colorful characters,doc brown
@@ -224,7 +218,6 @@ tin man,the wizard of oz
 wizard,the wizard of oz
 dorothy gale,the wizard of oz
 cowardly lion,the wizard of oz
-cowardly lion,courage,red
 penny,penny park
 penny park,mystery hunt
 mystery hunt,bookspace
