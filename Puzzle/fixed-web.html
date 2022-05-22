@@ -17,6 +17,7 @@
 </div>
 
 <h1>IF YOU REFRESH YOU LOSE ALL PROGRESS</h1>
+<p>Scroll around to find the start nodes. Source code has spoilers.</p>
 
 <svg width="2000" height="5000"></svg>
 
@@ -76,6 +77,12 @@ function reveal(word) {
     }
 }
 
+function revealNoEnum(word) {
+    if (!revealedNoEnumNodes.includes(cleanAnswer(word))) {
+        revealedNoEnumNodes.push(cleanAnswer(word));
+    }
+}
+
 function solve(word) {
     if (!solvedNodes.includes(cleanAnswer(word))) {
         solvedNodes.push(cleanAnswer(word));
@@ -83,14 +90,18 @@ function solve(word) {
 }
 
 function getNodeStatus(node) {
-  // There are 3 levels of visibility.
+  // There are 4 levels of visibility.
   // hidden - do not show
-  // revealed - reveal the node but do not reveal the text.
+  // revealed-no-enum - reveal the node, but do not reveal its enumeration
+  // revealed - reveal the node and its enumeration, but not the answer.
   // solved - reveal the node entirely.
-  if (node.ntype === "hidden") {
-      return "hidden";
-  } else if (solvedNodes.includes(cleanAnswer(node.label))) {
+  if (solvedNodes.includes(cleanAnswer(node.label))) {
       return "solved";
+  } else if (node.ntype === "hidden") {
+      // reveal these at the start
+      revealNoEnum(node.label);
+      reveal(node.label);
+      return "revealed-no-enum";
   } else if (node.ntype === "given") {
       reveal(node.label);
       solve(node.label);
@@ -100,10 +111,11 @@ function getNodeStatus(node) {
   if (neigh >= 1) {
     // always reveal
     reveal(node.label);
-    if (node.ntype === "topic") {
-        // sutosolve the topic.
-        solve(node.label)
-        return "solved";
+    // TODO should answer require all neighbors to be seen?
+    if (node.ntype === "topic" || node.ntype === "hidden" || node.ntype === "answer") {
+        // auto reveal-no-enum the topic.
+        revealNoEnum(node.label);
+        return "revealed-no-enum";
     } else {
         return "revealed";
     }
@@ -112,7 +124,11 @@ function getNodeStatus(node) {
 }
 
 function getLinkVisible(link) {
-    return revealedNodes.includes(cleanAnswer(link.target)) && revealedNodes.includes(cleanAnswer(link.source))
+    return (revealedNodes.includes(cleanAnswer(link.target)) && revealedNodes.includes(cleanAnswer(link.source))
+        ||
+        revealedNoEnumNodes.includes(cleanAnswer(link.target))
+        ||
+        revealedNoEnumNodes.includes(cleanAnswer(link.source)));
 }
 
 function getLinkColor(link) {
@@ -133,6 +149,8 @@ function getText(node) {
     var stat = getNodeStatus(node);
     if (stat === "hidden") {
         return "";
+    } else if (stat === "revealed-no-enum") {
+        return "???";
     } else if (stat === "revealed") {
         return node.label.replaceAll(/[a-zA-Z]/ig, '*');
     } else {
@@ -144,6 +162,8 @@ function getText(node) {
 var solvedNodes = [];
 // nodes we've revealed.
 var revealedNodes = [];
+// nodes revealed without enum - should reveal all neighbors;
+var revealedNoEnumNodes = [];
 
 var width = 5000//window.innerWidth
 var height = 5000//window.innerHeight
@@ -157,6 +177,7 @@ function assignNodes() {
 
     var startLen = solvedNodes.length;
     var startLen2 = revealedNodes.length;
+    var startLen3 = revealedNoEnumNodes.length;
     svg.selectAll("*").remove();
 
     var nodeElements = svg.append("g")
@@ -198,7 +219,8 @@ function assignNodes() {
     // propagation of topic nodes auto-solving.
     var endLen = solvedNodes.length;
     var endLen2 = revealedNodes.length;
-    if (endLen > startLen || endLen2 > startLen2) {
+    var endLen3 = revealedNoEnumNodes.length;
+    if (endLen > startLen || endLen2 > startLen2 || endLen3 > startLen3) {
         assignNodes();
     }
 }

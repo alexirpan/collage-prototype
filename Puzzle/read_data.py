@@ -1,3 +1,4 @@
+import csv
 # This only lists nodes that are special, by default nodes are added with the
 # default type
 with open("../Nodes.csv") as f:
