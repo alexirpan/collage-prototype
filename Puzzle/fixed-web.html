@@ -58,13 +58,20 @@ function getNodeY(node, neighbors) {
 }
 
 function numNeighbors(answer) {
+    // for revealing purposes, we also include reveal-no-enum nodes.
     var count = 0;
     for (var i = 0; i < links.length; i++) {
         var link = links[i];
-        if (cleanAnswer(link.source) === cleanAnswer(answer) && solvedNodes.includes(cleanAnswer(link.target))) {
+        if (cleanAnswer(link.source) === cleanAnswer(answer) &&
+            (solvedNodes.includes(cleanAnswer(link.target)) ||
+             revealedNoEnumNodes.includes(cleanAnswer(link.target)))
+           ) {
             count++;
         }
-        if (cleanAnswer(link.target) === cleanAnswer(answer) && solvedNodes.includes(cleanAnswer(link.source))) {
+        if (cleanAnswer(link.target) === cleanAnswer(answer) &&
+            (solvedNodes.includes(cleanAnswer(link.source)) ||
+             revealedNoEnumNodes.includes(cleanAnswer(link.source)))
+           ) {
             count++;
         }
     }
