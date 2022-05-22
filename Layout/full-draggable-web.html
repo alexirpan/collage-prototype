@@ -125,3 +125,12 @@ simulation.nodes(nodes).on('tick', () => {
 
 simulation.force("link").links(links)
 </script>
+<script>
+function copyPositions() {
+    setTimeout( function() {
+        navigator.clipboard.writeText(nodes.map(function (n) { return n.id + " " +  n.x + " " + n.y; }))
+            .then(function() { console.log('Copied'); },
+                  function(err) { console.log('Error'); });
+    }, 3000);
+}
+</script>
