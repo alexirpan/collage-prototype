@@ -5,7 +5,7 @@ with open("../Nodes.csv") as f:
     nodes = list(csv.reader(f,delimiter=','))
     # Drop header
     nodes = nodes[1:]
-    nodes = [n for n in nodes if n]
+    nodes = [n for n in nodes if ''.join(n)]
     # drop empty cells
     nodes = [[t.strip() for t in row if t.strip()] for row in nodes]
     # uppercase answers but not node type
@@ -18,7 +18,7 @@ with open("../Edges.csv") as f:
     rows = list(csv.reader(f,delimiter=','))
     # Drop header
     rows = rows[1:]
-    rows = [row for row in rows if row]
+    rows = [row for row in rows if ''.join(row)]
     # drop empty cells
     rows = [[t.upper().strip() for t in row if t.strip()] for row in rows]
     for row in rows:

@@ -23,7 +23,9 @@ with open('positiondump') as f:
 with open("locations.js", "w") as f:
     f.write('var nodes = [\n')
     # (name, type)
-    for i, (name, ntype) in enumerate(nodes):
+    for i, row in enumerate(nodes):
+        name = row[0]
+        ntype = row[1]
         c = "green"
         if ntype.startswith("topic") or ntype.startswith("given"):
             c = "orange"
