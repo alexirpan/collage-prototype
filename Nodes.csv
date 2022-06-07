@@ -1,30 +1,7 @@
-Nodes only need to specified if they are not a default node,,,,"answer = the answer, hidden = answer to backsolve, topic = central descriptive node"
-triforce,answer,,,
-fellowship,hidden,,,
-dragons,hidden,,,
-disciples,hidden,,,
-nintendo,hidden,,,
-forrest gump,hidden,,,
-wizard,topic,,,
-dwarves,topic,,,
-archers,topic,,,
-thomas the tank engine,topic,,,
-bounty hunters,topic,,,
-major arcana,topic,,,
-coins,topic,,,
-mushrooms,topic,,,
-lauren faust,topic,,,
-disney & pixar,topic,,,
-space programs,topic,,,
-the hunger games,topic,,,
-mit,topic,,,
-major arcana,topic,,,
-robert pattinson characters,topic,,,
-colorful characters,topic,,,
-dystopia,topic,,,
-my little pony,topic,,,
-greek mythology,topic,,,
-time travel,topic,,,
-birds,topic,,,
-pirates,topic,,,
-metals,topic,,,
+Nodes only need to specified if they are not a default node,
+triforce,answer
+fellowship,hidden
+dragon,hidden
+apostle,hidden
+nintendo,hidden
+apple,hidden
