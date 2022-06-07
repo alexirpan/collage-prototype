@@ -18,8 +18,8 @@ with open("../Edges.csv") as f:
     rows = list(csv.reader(f,delimiter=','))
     # Drop header
     rows = rows[1:]
-    rows = [row for row in rows if row]
     # drop empty cells
+    rows = [row for row in rows if ''.join(row)]
     rows = [[t.upper().strip() for t in row if t.strip()] for row in rows]
     for row in rows:
         start = row[0]

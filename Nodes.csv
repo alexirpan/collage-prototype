@@ -1,7 +1,34 @@
-Nodes only need to specified if they are not a default node,
-triforce,answer
-fellowship,hidden
-dragon,hidden
-apostle,hidden
-nintendo,hidden
-apple,hidden
+"Nodes only need to specified if they are not a default node, or have an alternate spelling",,,,,,"answer = the answer, hidden = answer to backsolve, topic = central descriptive node",,,,,,3rd column onward = alternate accepted spellings (display the 3rd col in puzzle)
+triforce,answer,,,,,,,,,,,
+fellowship,hidden,,,,,,,,,,,
+dragon,hidden,,,,,,,,,,,
+apostle,hidden,disciple,,,,,,,,,,
+arabian nights,hidden,,,,,,,,,,,
+apple,hidden,,,,,,,,,,,
+wizard,topic,,,,,,,,,,,
+dwarf,topic,,,,,,,,,,,
+archer,topic,,,,,,,,,,,
+thomas the tank engine,topic,thomas & friends,,,,,,,,,,
+chinese tech company,topic,,,,,,,,,,,
+major arcana,topic,tarot,,,,,,,,,,
+sesame street,topic,,,,,,,,,,,
+disney,topic,,,,,,,,,,,
+dc super hero girls,topic,,,,,,,,,,,
+the hunger games,topic,,,,,,,,,,,
+mit,topic,massachusetts institute of technology,,,,,,,,,,
+major arcana,topic,,,,,,,,,,,
+robert pattinson,topic,,,,,,,,,,,
+resistor color,topic,,,,,,,,,,,
+dystopia,topic,,,,,,,,,,,
+my little pony,topic,,,,,,,,,,,
+greek mythology,topic,,,,,,,,,,,
+time travel,topic,,,,,,,,,,,
+bird,topic,,,,,,,,,,,
+pirate,topic,,,,,,,,,,,
+metal,topic,,,,,,,,,,,
+twilight,topic,,,,,,,,,,,
+tea leaves,regular,tasseography,,,,,,,,,,
+astrology,topic,,,,,,,,,,,
+ali baba,regular,alibaba,,,,,,,,,,
+measurement,topic,,,,,,,,,,,
+fruit,topic,,,,,,,,,,,
