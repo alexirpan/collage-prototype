@@ -36,11 +36,30 @@ if min(degrees.values()) == 0:
     print('Degree 0:')
     for v in verts:
         if degrees[v] == 0:
-            print(v)
+            print('  ' + v)
 
 print('Degree <= 1:')
 for v in verts:
     if degrees[v] <= 1:
-        print(v)
+        print('  ' + v)
+
+print('Disconnected from TRIFORCE')
+seen = set()
+to_visit = ['TRIFORCE']
+while to_visit:
+    c = to_visit.pop()
+    seen.add(c)
+    # O(N^2) instead of O(N)
+    for e in edg:
+        if e[0] == c and e[1] not in seen:
+            to_visit.append(e[1])
+            seen.add(e[1])
+        if e[1] == c and e[0] not in seen:
+            to_visit.append(e[0])
+            seen.add(e[0])
+
+for v in verts:
+    if v not in seen:
+        print('  ' + v)
 
 # nodes.forEach(function (n) { console.log(n.id, n.x, n.y)})
