@@ -68,9 +68,13 @@ var dragDrop = d3.drag().on('start', function (node) {
   node.fy = node.y
   console.log(node)
 }).on('drag', function (node) {
-  simulation.alphaTarget(0.7).restart()
+  // this is needed to rerender but alpha = 0 causes no forces to apply.
+  simulation.alphaTarget(0).restart()
   node.fx = d3.event.x
   node.fy = d3.event.y
+  // x/y don't propagate without this
+  node.x = d3.event.x
+  node.y = d3.event.y
 })/*.on('end', function (node) {
   if (!d3.event.active) {
     simulation.alphaTarget(0)
