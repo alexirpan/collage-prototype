@@ -116,8 +116,10 @@ var textElements = svg.append("g")
   .enter().append("text")
     .text(function (node) { return  node.label })
 	  .attr("font-size", 15)
-	  .attr("dx", 15)
-    .attr("dy", 4)
+	//.attr("dx", 15)
+    //.attr("dy", 4)
+    .attr("dy", 18)
+    .attr("text-anchor", "middle")
 
 simulation.nodes(nodes).on('tick', () => {
   nodeElements
@@ -134,6 +136,8 @@ simulation.nodes(nodes).on('tick', () => {
 })
 
 simulation.force("link").links(links)
+
+setTimeout(function() { simulation.alpha(0.7).restart(); }, 3000)
 </script>
 <script>
 function copyPositions() {
