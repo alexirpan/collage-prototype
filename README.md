@@ -27,7 +27,7 @@ Ask them to open `Puzzle/fixed-web.html`
 
 5. Run `Puzzle/locations.py` to convert position dump into `locations.js` file.
 
-6. Now 'Puzzle/fixed-web.html` will be updated and ready for testing.
+6. Now `Puzzle/fixed-web.html` will be updated and ready for testing.
 
 # Known Issues
 
